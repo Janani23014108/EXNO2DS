@@ -23,37 +23,100 @@ STEP 7: Use cross tabulation method to quantitatively analyze the relationship b
 STEP 8: Use heatmap method of representation to show relationships between two variables, one plotted on each axis.
 
 ## CODING AND OUTPUT
-        <<INCLUDE YOUR CODING AND OUTPUT SCREENSHOTS>>
-![Screenshot (48)](https://github.com/user-attachments/assets/31d1623e-d9a2-4f8b-85ec-0d4aef0cb32b)
+  ```
+import pandas as pd
+df=pd.read_csv("/content/titanic_dataset.csv")
+df
+```
+![image](https://github.com/user-attachments/assets/2555e302-d9a2-4ad5-80ad-fa0bbab55e07)
+```
+df.isna().sum()
+```
+![image](https://github.com/user-attachments/assets/ba830c55-769d-4491-99fe-81a577be9d53)
+```
+df.dropna(inplace=True)
+df
+```
+![image](https://github.com/user-attachments/assets/b5c1a2c5-404c-4f0b-93f1-720e4bfe38c7)
+```
+df.info()
+```
+![image](https://github.com/user-attachments/assets/74de49e7-8151-4dea-9fab-e8b63e89db8e)
+```
+df.shape
+```
+
+![image](https://github.com/user-attachments/assets/9e4a87d6-259e-45de-a49e-bc8e8bfb024c)
+```
+df.set_index("PassengerId",inplace=True)
+```
+```
+df.describe()
+```
+
+![image](https://github.com/user-attachments/assets/af805b2a-a971-4ecf-86ec-62604089469a)
+```
+df.nunique()
+```
+
+![image](https://github.com/user-attachments/assets/d5cb88c2-db46-4750-8553-a3c91cc2d598)
+```
+df["Survived"].value_counts()
+```
+
+![image](https://github.com/user-attachments/assets/f33160b6-b8fc-43a4-9d88-2450b49797de)
+```
+per=(df["Survived"].value_counts()/df.shape[0]*100).round(2)
+per
+```
+
+![image](https://github.com/user-attachments/assets/bf6f3d88-3dc2-4192-82f2-191275cf0fb7)
+```
+import matplotlib.pyplot as plt
+import seaborn as sns
+```
+```
+sns.countplot(data=df,x="Survived")
+```
+
+![image](https://github.com/user-attachments/assets/f15d0bf2-5b76-44b9-b1aa-539c61f021dc)
+```
+df
+```
+
+![image](https://github.com/user-attachments/assets/1f9254de-e484-4932-b10c-d25d7fd741a1)
+```
+df.Pclass.unique()
+```
+![image](https://github.com/user-attachments/assets/f29737f2-f49a-4294-8c77-324ba8cb68ad)
+```
+df.rename(columns= {'Sex': 'Gender'},inplace=True)
+```
+```
+sns.catplot(x="Gender",col="Survived",kind= "count",data=df,height=5,aspect=.7)
+```
+
+![image](https://github.com/user-attachments/assets/2d44e781-2c1d-4728-9508-2d3bc7dfeb39)
+```
+sns.catplot(x='Survived',hue="Gender",data=df,kind = "count")
+```
+
+![image](https://github.com/user-attachments/assets/c2ba78f5-03e0-43d9-ae9a-f37f61667cb2)
+```
+sns.catplot(data=df,col = "Survived",x="Gender",hue="Pclass",kind = "count")
+```
+
+![image](https://github.com/user-attachments/assets/fbed2e54-70d0-410c-9f7f-fb44c65d87f1)
 
 
-![Screenshot (50)](https://github.com/user-attachments/assets/ec03f344-53f4-4fe6-8c3c-31d0d87f2952)
-
-
-![Screenshot (51)](https://github.com/user-attachments/assets/e51d278a-d935-43e9-aa66-10b942f79eda)
-
-
-![Screenshot (52)](https://github.com/user-attachments/assets/86dd60c8-4f16-48ad-8444-c3f95ec629bf)
-
-
-![Screenshot (53)](https://github.com/user-attachments/assets/d14869c7-7c4f-4ad8-8b08-e2797d480aa3)
-
-
-![Screenshot (55)](https://github.com/user-attachments/assets/b2a1c608-09e3-429f-a8a3-b6d8910c86ea)
-
-![Screenshot (56)](https://github.com/user-attachments/assets/73b55e1a-1d00-4d7a-807d-8c489c9dd7cb)
-
-![Screenshot (57)](https://github.com/user-attachments/assets/aba5af65-828d-47ab-a0ef-9b11f8eeba7f)
-
-![Screenshot (58)](https://github.com/user-attachments/assets/29c9c20b-5ff5-458d-ab06-47a3b602586e)
-![Screenshot (59)](https://github.com/user-attachments/assets/f16acbac-81cd-44e5-b2e5-d3599055424f)
-
-![screenshot 56](https://github.com/user-attachments/assets/6deb2880-840a-4061-8203-e7a155ae4905)
 
 
 
 
+
+
+     
 
 # RESULT
-        <<INCLUDE YOUR RESULT HERE>>
+        
 This process helps in effective data cleaning, outlier detection, and exploratory data analysis (EDA).
